@@ -1,0 +1,32 @@
+myapp_accueil:
+    path: /
+    defaults: { _controller: MyAppFilmothequeBundle:Acteur:lister }
+
+myapp_acteur_lister:
+    path: /acteur/
+    defaults: { _controller: MyAppFilmothequeBundle:Acteur:lister }
+
+myapp_acteur_ajouter:
+    path: /acteur/ajouter
+    defaults: { _controller: MyAppFilmothequeBundle:Acteur:editer }
+
+myapp_acteur_modifier:
+    path: /acteur/modifier/{id}
+    defaults: { _controller: MyAppFilmothequeBundle:Acteur:editer }
+
+myapp_acteur_supprimer:
+    path: /acteur/supprimer/{id}
+    defaults: { _controller: MyAppFilmothequeBundle:Acteur:supprimer }
+
+myapp_film_view:
+    path:      /film/{id}
+    defaults:
+        _controller: MyAppFilmothequeBundle:Film:profil
+    requirements:
+        id: \d+
+
+myapp_film_lister:
+    path:      /film
+    defaults:
+        _controller: MyAppFilmothequeBundle:Film:lister
+

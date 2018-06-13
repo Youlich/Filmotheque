@@ -1,0 +1,32 @@
+{% extends "MyAppFilmothequeBundle::layout.html.twig" %}
+
+{% block title %}
+    Film - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h2>{{ film.titre }}</h2>
+    <i>{{ film.date }}</i>
+
+    <div class="well">
+        {{ film.description }}
+    </div>
+
+    {% if not film.categories.empty %}
+        <p>
+            Ce film appartient aux catégories suivantes :
+            {% for categorie in film.categories %}
+                {{ categorie.nom }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <p>
+        <a href="{{ path('myapp_film_lister') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </p>
+
+{% endblock %}

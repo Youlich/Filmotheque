@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block body %}
+
+    <h1>Liste des films</h1>
+
+    {% for message in app.session.flashbag.get('info') %}
+        <div class="alert alert-info">Message flash : {{ message }}</div>
+    {% endfor %}
+
+    <table>
+        {% for f in films %}
+            <tr>
+                <td>{{ f.titre }}</td>
+                <td style="padding-left: 20px">{{ f.description }}</td>
+            </tr>
+        {% else %}
+            <tr><td>Aucun film n'a été trouvé.</td></tr>
+        {% endfor %}
+    </table>
+
+    {% for message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">Message flash : {{ message }}</div>
+    {% endfor %}
+
+{% endblock %}

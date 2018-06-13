@@ -1,0 +1,34 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block body %}
+
+<h1>Liste des acteurs</h1>
+
+{% for message in app.session.flashbag.get('info') %}
+    <div class="alert alert-info">Message flash : {{ message }}</div>
+{% endfor %}
+
+<table>
+    {% for a in acteurs %}
+        <tr>
+            <td>{{ a.nom }}</td>
+            <td style="padding-left: 20px">{{ a.prenom }}</td>
+            <td style="padding-left: 20px">{{ a.dateNaissance|date('d/m/Y') }}</td>
+            <td style="padding-left: 20px">{{ a.sexe }}</td>
+            <td style="padding-left: 20px"><a href="{{ path('myapp_acteur_modifier', { 'id': a.id }) }}">Modifier</a></td>
+            <td style="padding-left: 20px"><a href="{{ path('myapp_acteur_supprimer', { 'id': a.id }) }}">Supprimer</a></td>
+        </tr>
+    {% else %}
+        <tr><td>Aucun acteur n'a été trouvé.</td></tr>
+    {% endfor %}
+</table>
+
+{% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-info">Message flash : {{ message }}</div>
+{% endfor %}
+<br/>
+<p><a href="{{ path('myapp_acteur_ajouter') }}">Ajouter un acteur</a>
+
+</p>
+{% endblock %}

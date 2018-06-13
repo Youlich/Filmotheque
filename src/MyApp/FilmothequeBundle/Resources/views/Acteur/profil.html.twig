@@ -1,0 +1,32 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Acteur - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h2>{{ acteur.prenom }}</h2>
+    <i>{{ acteur.nom }}</i>
+
+    <div class="well">
+        {{ acteur.dateNaissance }}
+    </div>
+
+    {% if not acteur.films.empty %}
+        <p>
+            Cet acteur a joué dans les films suivants :
+            {% for film in acteur.films %}
+                {{ film.titre }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <p>
+        <a href="{{ path('myapp_acteur_lister') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </p>
+
+{% endblock %}

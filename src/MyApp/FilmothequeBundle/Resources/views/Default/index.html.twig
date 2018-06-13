@@ -1,0 +1,11 @@
+
+<html>
+<body>
+<h1>Liste des catégories</h1>
+{% for categorie in categories %}
+    <p>{{ categorie.nom }}</p>
+{% else %}
+    <p>Aucune catégorie n'a été trouvée.</p>
+{% endfor %}
+</body>
+</html>
